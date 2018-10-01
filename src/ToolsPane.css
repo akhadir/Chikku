@@ -1,0 +1,37 @@
+.tools-pane {
+    font-size: 13px;
+    padding-bottom: 20px;
+}
+.tools-pane .material-icons {
+    display: block;
+}
+.tools-pane .icon {
+    text-align: center;
+    min-width: 36px;
+    min-height: 50px;
+    padding: 5px;
+    font-size: 11px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.tools-pane .lbl {
+    margin-bottom: 0;
+    cursor: pointer;
+}
+.tools-pane .list-group-item {
+    padding: 4px 20px;
+    border-radius: 0
+}
+.tools-pane .icon-cont {
+    background-color: white;
+    color: black;
+    margin-top: 4px;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-bottom: -4px;
+    padding: 20px;
+    padding-top: 0;
+    padding-right: 0;
+}

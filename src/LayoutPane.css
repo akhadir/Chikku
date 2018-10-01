@@ -1,0 +1,43 @@
+.layout-pane {
+    border: 1px dotted rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+    min-height: 700px;
+    position: relative;
+    background: beige;
+    padding: 3px;
+}
+.layout-pane .row {
+    height: inherit;
+    min-height: 97%;
+    margin: 10px;
+    background-color: gold;
+    border: 1px dotted blue;
+    position: relative;
+    width: 97%;
+}
+.layout-pane .row .row {
+    background-color: white;
+}
+.layout-pane .col {
+    height: inherit;
+    margin: 10px;
+    background-color: darkgray;
+    border: 1px dotted white;
+    padding: 3px;
+    position: relative;
+}
+.layout-pane .col .col {
+    background-color: chocolate;
+}
+.layout-pane .settings {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    height: 10px;
+    width: 10px;
+    font-size: 20px;
+}
+
+.layout-pane .settings:hover {
+    text-decoration: none !important;
+}
