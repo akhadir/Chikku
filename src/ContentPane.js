@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./ContentPane.css";
 import LayoutPane from "./LayoutPane";
 import $ from "../node_modules/jquery/dist/jquery";
+import rowData from './res/components/row/conf.json';
 export default class ContentPane extends Component {
     state = {data:{}};
     constructor(props) {
@@ -11,17 +12,7 @@ export default class ContentPane extends Component {
             props.data.rows = [];
         }
         if (!props.data.rows.length) {
-            props.data.rows.push({
-                cols: [],
-                components: [],
-                rows: [],
-                css: '',
-                js: '',
-                html: '',
-                conf: '',
-                libs: [],
-                imports: []
-            })
+            props.data.rows.push(JSON.parse(JSON.stringify(rowData)));
         }
     };
     drop = (e) => {

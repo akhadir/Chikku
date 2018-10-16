@@ -1,3 +1,9 @@
+html, body, #root {
+  height: 100%;
+}
+.App {
+  height: inherit;
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -6,6 +12,22 @@
 .App-header {
   background-color: #222;
   color: white;
+  margin-bottom: 5px;
+}
+.App-header h2 {
+  float: left;
+  padding-left: 25px
+}
+.header-buttons {
+    float: right;
+}
+.header-buttons .btn {
+    margin-right: 10px;
+    margin-top: 7px;
+}
+
+.App-body {
+    height: calc(100% - 51px);
 }
 
 @keyframes App-logo-spin {

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import "./LayoutPane.css";
 import $ from "../node_modules/jquery/dist/jquery";
+import rowData from './res/components/row/conf.json';
+import colData from './res/components/col/conf.json';
 export default class LayoutPane extends Component {
     static count = 0;
     state = {data:{}};
@@ -10,21 +12,15 @@ export default class LayoutPane extends Component {
         this.state.data = props.data;
         this.type = props.type;
     };
-    pushEmptyData = (data, dcount) => {
-        var i;
+    pushEmptyData = (data, dcount, isCol) => {
+        var i,
+            config = rowData;
         dcount = dcount? dcount: 1;
+        if (isCol) {
+            config = colData;
+        }
         for (i = 0; i < dcount; i++) {
-            data.push({
-                cols: [],
-                components: [],
-                rows: [],
-                css: '',
-                js: '',
-                html: '',
-                conf: '',
-                libs: [],
-                imports: []
-            });
+            data.push(JSON.parse(JSON.stringify(config)));
         }
     };
     drop = (e) => {
@@ -36,9 +32,9 @@ export default class LayoutPane extends Component {
             data = this.state.data;
         if (addData === 'row') {
             if (this.type === 'col' && data.rows.length) {
-                this.pushEmptyData(data.rows[0].rows, 2)
+                this.pushEmptyData(data.rows[0].rows, 2);
             } else {
-                this.pushEmptyData(data.rows)
+                this.pushEmptyData(data.rows);
             }
         } else if (addData === 'col') {
             if (!data.rows.length) {
@@ -52,7 +48,7 @@ export default class LayoutPane extends Component {
                 if (pushDataObj.length) {
                     count = 1;
                 }
-                this.pushEmptyData(pushDataObj, count);
+                this.pushEmptyData(pushDataObj, count, true);
             } else {
                 if (data.rows.length === 1) {
                     count = 2;
@@ -60,7 +56,7 @@ export default class LayoutPane extends Component {
                     if (pushDataObj.length) {
                         count = 1;
                     }
-                    this.pushEmptyData(data.rows[0].cols, count);
+                    this.pushEmptyData(data.rows[0].cols, count, true);
                 } else {
                     console.log("Wrong drop location for column.")
                 }
@@ -108,12 +104,31 @@ export default class LayoutPane extends Component {
         return out;
     };
     render() {
-        var typeClass = 'row no-gutters';
+        var typeClass = 'row',
+            data = this.state.data;
         if (this.cid === 1) {
             typeClass = 'layout-pane ' + typeClass;
         }
         if (this.type) {
             typeClass = this.type;
+        }
+        if (data.noGutters) {
+            typeClass += ' no-gutters';
+        }
+        if (data.xl) {
+            typeClass += ' col-xl-' + data.xl;
+        }
+        if (data.lg) {
+            typeClass += ' col-lg-' + data.lg;
+        }
+        if (data.md) {
+            typeClass += ' col-md-' + data.md;
+        }
+        if (data.sm) {
+            typeClass += ' col-sm-' + data.sm;
+        }
+        if (data.xs) {
+            typeClass += ' col-xs-' + data.xs;
         }
         return (
             <div className={`${typeClass}`} onDrop={this.drop} onDragOver={this.allowDrop} id={`layoutPane${this.cid}`}>

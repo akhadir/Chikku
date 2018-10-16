@@ -5,29 +5,43 @@
     position: relative;
     background: beige;
     padding: 3px;
+    height: inherit;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.layout-pane.row {
+    margin-left: 0;
+    margin-right: 0;
 }
 .layout-pane .row {
-    height: inherit;
-    min-height: 97%;
+    min-height: 30%;
     margin: 10px;
     background-color: gold;
     border: 1px dotted blue;
     position: relative;
     width: 97%;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .layout-pane .row .row {
     background-color: white;
 }
 .layout-pane .col {
-    height: inherit;
+    height: calc(100% - 20px);
     margin: 10px;
     background-color: darkgray;
-    border: 1px dotted white;
+    border: 1px dotted green;
     padding: 3px;
     position: relative;
 }
+.layout-pane .col > .row {
+    height: calc(100% - 20px);
+}
 .layout-pane .col .col {
-    background-color: chocolate;
+    background-color: greenyellow;
+}
+.layout-pane .col + .col {
+    margin-left: 0;
 }
 .layout-pane .settings {
     position: absolute;
