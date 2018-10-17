@@ -12,16 +12,24 @@ export default class LayoutPane extends Component {
         this.state.data = props.data;
         this.type = props.type;
     };
+    
     pushEmptyData = (data, dcount, isCol) => {
         var i,
+            firstConfig,
+            newConfig,
             config = rowData;
         dcount = dcount? dcount: 1;
         if (isCol) {
             config = colData;
         }
         for (i = 0; i < dcount; i++) {
-            data.push(JSON.parse(JSON.stringify(config)));
+            newConfig = JSON.parse(JSON.stringify(config));
+            if (i === 0) {
+                firstConfig = newConfig;
+            }
+            data.push(newConfig);
         }
+        this.props.handlePropChange(firstConfig.conf)
     };
     drop = (e) => {
         e.stopPropagation();
@@ -70,19 +78,21 @@ export default class LayoutPane extends Component {
         e.preventDefault();
     };
     getRows = () => {
-        var out = this.state.data.rows.map(function (row, index) {
+        var that = this,
+        out = this.state.data.rows.map(function (row, index) {
             return (
-                <LayoutPane data={row} key={index}></LayoutPane>
+                <LayoutPane data={row} key={index} handlePropChange={that.props.handlePropChange}></LayoutPane>
             );
-        })
+        });
         return out;
     };
     getCols = () => {
-        var out = this.state.data.cols.map(function (col, index) {
+        var that = this,
+        out = this.state.data.cols.map(function (col, index) {
             return (
-                <LayoutPane data={col} type="col" key={index}></LayoutPane>
-            )
-        })
+                <LayoutPane data={col} type="col" key={index} handlePropChange={that.props.handlePropChange}></LayoutPane>
+            );
+        });
         return out;
     };
     getComponents = () => {
@@ -115,6 +125,7 @@ export default class LayoutPane extends Component {
         if (data.noGutters) {
             typeClass += ' no-gutters';
         }
+        // if (data.xl === data.lg ===)
         if (data.xl) {
             typeClass += ' col-xl-' + data.xl;
         }

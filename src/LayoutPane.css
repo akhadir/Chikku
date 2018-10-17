@@ -19,7 +19,7 @@
     background-color: gold;
     border: 1px dotted blue;
     position: relative;
-    width: 97%;
+    width: 100%;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -36,6 +36,7 @@
 }
 .layout-pane .col > .row {
     height: calc(100% - 20px);
+    width: calc(100% - 20px);
 }
 .layout-pane .col .col {
     background-color: greenyellow;

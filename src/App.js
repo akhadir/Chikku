@@ -8,7 +8,10 @@ import ToolsPane from "./ToolsPane";
 import ContentPane from "./ContentPane";
 import PropertiesPane from "./PropertiesPane";
 export default class App extends Component {
-  state = {page: {html: "", css: "", js: "", libs: [], rows:[]}}
+  state = {page: {html: "", css: "", js: "", libs: [], rows:[], config: {}}, propConfig: {}};
+  handlePropChange(changedData) {
+      this.setState({propConfig: changedData});
+  }
   render() {
     return (
       <div className="App container-fluid">
@@ -24,10 +27,10 @@ export default class App extends Component {
           <div className="App-body row no-gutters">
               <div className="col-2">
                   <ToolsPane data={this.state.page}></ToolsPane>
-                  <PropertiesPane data={this.state.page}></PropertiesPane>
+                  <PropertiesPane data={this.state.propConfig}></PropertiesPane>
               </div>
               <div className="col-10">
-                  <ContentPane data={this.state.page}></ContentPane>
+                  <ContentPane data={this.state.page} handlePropChange={this.handlePropChange.bind(this)}></ContentPane>
               </div>
           </div>
       </div>

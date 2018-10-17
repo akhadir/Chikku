@@ -2,3 +2,39 @@
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 3px;
 }
+.properties-pane .prop {
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 11px;
+}
+.properties-pane .prop-key {
+    border-right: 1px solid rgba(0, 0, 0, 0.5);
+    padding-right: 10px;
+}
+.properties-pane .prop-key label {
+    margin-bottom: 0;
+    margin-left: 5px;
+    line-height: 1.4rem;
+}
+.properties-pane .prop-val,
+.properties-pane .prop-key {
+    padding: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.properties-pane .prop input[type='text'] {
+    width: 100%;
+    padding-left: 5px;
+    border: 0;
+    line-height: 1.4rem;
+}
+.properties-pane .title {
+    color: #fff;
+    font-size: 13px;
+    line-height: 1.6rem;
+    padding-left: 10px;
+    background-color: #007bff;
+    border-color: #007bff;
+}

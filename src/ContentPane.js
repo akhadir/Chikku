@@ -14,7 +14,9 @@ export default class ContentPane extends Component {
         if (!props.data.rows.length) {
             props.data.rows.push(JSON.parse(JSON.stringify(rowData)));
         }
+        props.handlePropChange(props.data.rows[0].conf);
     };
+    
     drop = (e) => {
         e.preventDefault();
         var data = e.dataTransfer.getData("id");
@@ -24,9 +26,10 @@ export default class ContentPane extends Component {
         e.preventDefault();
     };
     getLayout = () => {
+        var handlePropChange = this.props.handlePropChange;
         var out = this.state.data.rows.map(function (row, index) {
             return (
-                <LayoutPane data={row} key={index}></LayoutPane>
+                <LayoutPane handlePropChange={handlePropChange} data={row} key={index}></LayoutPane>
             );
         });
         return out;
