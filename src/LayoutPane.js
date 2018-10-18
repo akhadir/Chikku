@@ -136,6 +136,8 @@ export default class LayoutPane extends Component {
         classKeys.forEach(function (key, index) {
             val = conf[key];
             if (typeof val === "string" || typeof val === "number") {
+                // TODD: Setting and getting values in proper input format
+                // eslint-disable-next-line
                 if (val && val != "-1") {
                     typeClass += ' ' + key + '-' + conf[key];
                 }

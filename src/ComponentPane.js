@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./ComponentPane.css";
-import img from './res/components/img/conf.json';
+import Components from './Components';
 export default class ComponentPane extends Component {
     static count = 0;
     cid = null;
@@ -14,12 +14,11 @@ export default class ComponentPane extends Component {
         super(props);
         this.cid = ++ComponentPane.count;
         this.type = props.type;
-        this.comList["img"] = img;
-        var comp = this.comList[this.type],
+        var comp = Components[this.type],
         data = this.state.data = props.data,
         confKeys = Object.getOwnPropertyNames(comp);
         confKeys.forEach(function (key, index) {
-            data[key] = JSON.parse(JSON.stringify(img[key]));
+            data[key] = JSON.parse(JSON.stringify(comp[key]));
         });
         props.handleComponentChange(this);
     };
@@ -29,7 +28,7 @@ export default class ComponentPane extends Component {
     }
     getComponent() {
         var comp = this.state.data,
-        // eslint-disable-next-line
+            // eslint-disable-next-line
             conf = comp.conf,
             // eslint-disable-next-line
             out = eval("`" + comp.html + "`");
