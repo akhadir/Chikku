@@ -1,0 +1,14 @@
+{
+    "name": "label",
+    "version": "0.1",
+    "conf": {
+        "title": "",
+        "for": "",
+        "text": ""
+    },
+    "html": "<label title=\"${conf.title}\" for=\"${conf.for}\">${conf.text}</label>",
+    "js": "",
+    "css": "",
+    "libs": [],
+    "service": []
+}

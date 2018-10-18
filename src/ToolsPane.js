@@ -30,7 +30,7 @@ export default class ToolsPane extends Component {
                         <div className="icon rounded bg-primary text-white d-inline-block">
                             <i className="material-icons md-24">crop_7_5</i> <span>Button</span>
                         </div>
-                        <div className="icon rounded bg-primary text-white d-inline-block">
+                        <div className="icon rounded bg-primary text-white d-inline-block" data-id="text" draggable="true" onDragStart={this.drag}>
                             <i className="material-icons md-24">crop_16_9</i> <span>Text</span>
                         </div>
                         <div className="icon rounded text-white d-inline-block bg-primary" data-id="checkbox" draggable="true" onDragStart={this.drag}>
@@ -39,7 +39,7 @@ export default class ToolsPane extends Component {
                         <div className="icon rounded text-white d-inline-block bg-primary">
                             <i className="material-icons md-24">radio_button_checked</i> <span>Radio</span>
                         </div>
-                        <div className="icon rounded text-white d-inline-block bg-primary">
+                        <div className="icon rounded text-white d-inline-block bg-primary" data-id="label" draggable="true" onDragStart={this.drag}>
                             <i className="material-icons md-24">label</i> <span>Label</span>
                         </div>
                         <div className="icon rounded text-white d-inline-block bg-primary">
