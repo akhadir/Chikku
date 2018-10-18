@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ComponentPane from "./ComponentPane";
 import "./LayoutPane.css";
 import $ from "../node_modules/jquery/dist/jquery";
 import rowData from './res/components/row/conf.json';
@@ -11,11 +12,14 @@ export default class LayoutPane extends Component {
         this.cid = ++LayoutPane.count;
         this.state.data = props.data;
         this.type = props.type;
+        this.props.handleComponentChange(this)
     };
-    
+    setCurrentConf(e) {
+        e.preventDefault();
+        this.props.handleComponentChange(this);
+    }
     pushEmptyData = (data, dcount, isCol) => {
         var i,
-            firstConfig,
             newConfig,
             config = rowData;
         dcount = dcount? dcount: 1;
@@ -24,12 +28,8 @@ export default class LayoutPane extends Component {
         }
         for (i = 0; i < dcount; i++) {
             newConfig = JSON.parse(JSON.stringify(config));
-            if (i === 0) {
-                firstConfig = newConfig;
-            }
             data.push(newConfig);
         }
-        this.props.handlePropChange(firstConfig.conf)
     };
     drop = (e) => {
         e.stopPropagation();
@@ -69,6 +69,8 @@ export default class LayoutPane extends Component {
                     console.log("Wrong drop location for column.")
                 }
             }
+        } else {
+            data.components.push({type: addData});
         }
         data = JSON.parse(JSON.stringify(data));
         this.setState({data: data});
@@ -81,7 +83,7 @@ export default class LayoutPane extends Component {
         var that = this,
         out = this.state.data.rows.map(function (row, index) {
             return (
-                <LayoutPane data={row} key={index} handlePropChange={that.props.handlePropChange}></LayoutPane>
+                <LayoutPane data={row} key={index} handleComponentChange={that.props.handleComponentChange}></LayoutPane>
             );
         });
         return out;
@@ -90,13 +92,19 @@ export default class LayoutPane extends Component {
         var that = this,
         out = this.state.data.cols.map(function (col, index) {
             return (
-                <LayoutPane data={col} type="col" key={index} handlePropChange={that.props.handlePropChange}></LayoutPane>
+                <LayoutPane data={col} type="col" key={index} handleComponentChange={that.props.handleComponentChange}></LayoutPane>
             );
         });
         return out;
     };
-    getComponents = () => {
-        return '';
+    getComponents = (data) => {
+        var that = this,
+        out = this.state.data.components.map(function (comp, index) {
+            return (
+                <ComponentPane data={comp} type={comp.type} key={index} handleComponentChange={that.props.handleComponentChange}></ComponentPane>
+            );
+        });
+        return out;
     };
     moreLayouts = () => {
         var out = '',
@@ -115,35 +123,31 @@ export default class LayoutPane extends Component {
     };
     render() {
         var typeClass = 'row',
-            data = this.state.data;
+            val,
+            classKeys,
+            conf = this.state.data.conf;
         if (this.cid === 1) {
             typeClass = 'layout-pane ' + typeClass;
         }
         if (this.type) {
             typeClass = this.type;
         }
-        if (data.noGutters) {
-            typeClass += ' no-gutters';
-        }
-        // if (data.xl === data.lg ===)
-        if (data.xl) {
-            typeClass += ' col-xl-' + data.xl;
-        }
-        if (data.lg) {
-            typeClass += ' col-lg-' + data.lg;
-        }
-        if (data.md) {
-            typeClass += ' col-md-' + data.md;
-        }
-        if (data.sm) {
-            typeClass += ' col-sm-' + data.sm;
-        }
-        if (data.xs) {
-            typeClass += ' col-xs-' + data.xs;
-        }
+        classKeys = Object.getOwnPropertyNames(conf);
+        classKeys.forEach(function (key, index) {
+            val = conf[key];
+            if (typeof val === "string" || typeof val === "number") {
+                if (val && val != "-1") {
+                    typeClass += ' ' + key + '-' + conf[key];
+                }
+            } else if (typeof val === "boolean") {
+                if (val) {
+                    typeClass += ' ' + key;
+                }
+            }
+        });
         return (
             <div className={`${typeClass}`} onDrop={this.drop} onDragOver={this.allowDrop} id={`layoutPane${this.cid}`}>
-                <a href="#lay-settings" className="settings material-icons">settings_application</a>
+                <a href="#lay-settings" onClick={this.setCurrentConf.bind(this)} className="settings material-icons">settings_application</a>
                 {this.moreLayouts()}
             </div>
         );

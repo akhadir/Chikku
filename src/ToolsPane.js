@@ -51,7 +51,7 @@ export default class ToolsPane extends Component {
                         <div className="icon rounded text-white d-inline-block bg-primary">
                             <i className="material-icons md-24">payment</i> <span>Dropdown</span>
                         </div>
-                        <div className="icon rounded text-white d-inline-block bg-primary">
+                        <div className="icon rounded text-white d-inline-block bg-primary" data-id="img" draggable="true" onDragStart={this.drag}>
                             <i className="material-icons md-24">image</i> <span>Image</span>
                         </div>
                         <div className="icon rounded text-white d-inline-block bg-primary">

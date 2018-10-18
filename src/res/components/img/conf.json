@@ -1,0 +1,16 @@
+{
+    "name": "Img",
+    "version": "0.1",
+    "conf": {
+        "src": "",
+        "alt": "",
+        "title": "",
+        "width": "",
+        "height": ""
+    },
+    "html": "<img src=\"${conf.src}\" alt=\"${conf.alt}\" title=\"${conf.title}\" width=\"${conf.width}\" height=\"${conf.height}\"></img>",
+    "js": "",
+    "css": "",
+    "libs": [],
+    "service": []
+}

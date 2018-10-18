@@ -1,0 +1,7 @@
+.component-pane {
+    position: relative;
+    display: inline-block;
+    border: 1px dotted green;
+    min-width: 100px;
+    min-height: 100px;
+}

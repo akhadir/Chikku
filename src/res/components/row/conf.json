@@ -5,8 +5,8 @@
     "cols": [],
     "conf": {
         "no-gutters": true,
-        "align-items": ["start", "center", "end"],
-        "justify-content": ["start", "center", "end"]
+        "align-items": "start",
+        "justify-content": "start"
     },
     "html": "",
     "js": "",

@@ -14,7 +14,7 @@ export default class ContentPane extends Component {
         if (!props.data.rows.length) {
             props.data.rows.push(JSON.parse(JSON.stringify(rowData)));
         }
-        props.handlePropChange(props.data.rows[0].conf);
+        // props.handleComponentChange(props.data.rows[0]);
     };
     
     drop = (e) => {
@@ -26,10 +26,10 @@ export default class ContentPane extends Component {
         e.preventDefault();
     };
     getLayout = () => {
-        var handlePropChange = this.props.handlePropChange;
+        var handleComponentChange = this.props.handleComponentChange;
         var out = this.state.data.rows.map(function (row, index) {
             return (
-                <LayoutPane handlePropChange={handlePropChange} data={row} key={index}></LayoutPane>
+                <LayoutPane handleComponentChange={handleComponentChange} data={row} key={index}></LayoutPane>
             );
         });
         return out;
