@@ -7,8 +7,10 @@ import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
 import ToolsPane from "./ToolsPane";
 import ContentPane from "./ContentPane";
 import PropertiesPane from "./PropertiesPane";
+import Header from "./Header";
 export default class App extends Component {
-  state = {page: {html: "", css: "", js: "", libs: [], rows:[], config: {}}, currComp: {}, currCompData:{conf:{}}};
+    state = {page: {html: "", css: "", js: "", libs: [], rows:[], config: {}}, currComp: {}, currCompData:{conf:{}}};
+    // setState = function (obj) {};
     handleComponentChange(comp) {
         this.setState({currComp: comp});
         this.setState({currCompData: comp.state.data.conf});
@@ -22,13 +24,7 @@ export default class App extends Component {
         return (
           <div className="App container-fluid">
               <div className="App-header clearfix">
-                <h2>Chikku 0.1</h2>
-                <div className="header-buttons">
-                  <button className="btn btn-secondary btn-sm">Open A Project</button>
-                  <button className="btn btn-secondary btn-sm">Save As Project</button>
-                  <button className="btn btn-secondary btn-sm">Save Config</button>
-                  <button className="btn btn-secondary btn-sm">Save As Component</button>
-                </div>
+                <Header data={this.state.page}></Header>
               </div>
               <div className="App-body row no-gutters">
                   <div className="col-2">

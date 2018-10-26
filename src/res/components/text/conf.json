@@ -3,6 +3,7 @@
     "version": "0.1",
     "conf": {
         "placeholder": "",
+        "id": "",
         "title": "",
         "autofocus": "",
         "width": "",
@@ -13,7 +14,7 @@
         "disabled": "",
         "autocomplete": ""
     },
-    "html": "<input type=\"text\" ${conf.autofocus} placeholder=\"${conf.placeholder}\" title=\"${conf.title}\" autocomplete=\"${conf.autocomplete}\" height=\"${conf.height}\" width=\"${conf.width}\" ${conf.readonly} ${conf.disabled} value=\"${conf.value}\" ${conf.required}></img>",
+    "html": "<input type=\"text\" id=\"${conf.id}\" ${conf.autofocus} placeholder=\"${conf.placeholder}\" title=\"${conf.title}\" autocomplete=\"${conf.autocomplete}\" height=\"${conf.height}\" width=\"${conf.width}\" ${conf.readonly} ${conf.disabled} value=\"${conf.value}\" ${conf.required}></img>",
     "js": "",
     "css": "",
     "libs": [],

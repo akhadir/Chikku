@@ -10,13 +10,13 @@ html, body, #root {
 }
 
 .App-header {
-  background-color: #222;
+  background: linear-gradient(to right, #007BFF 0%, #33ccff 10%, #ff99cc 90%);
   color: white;
   margin-bottom: 5px;
 }
 .App-header h2 {
   float: left;
-  padding-left: 25px
+  padding-left: 10px
 }
 .header-buttons {
     float: right;

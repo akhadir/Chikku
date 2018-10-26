@@ -1,0 +1,54 @@
+.App-header h2 {
+  float: left;
+  padding-left: 10px
+}
+.header-buttons {
+    float: right;
+}
+.header-buttons .btn {
+    margin-right: 10px;
+    margin-top: 7px;
+}
+.action-buttons {
+    float: right;
+    position: relative;
+}
+.action-buttons .add-lib-btn {
+    margin-right: 10px;
+    margin-top: 10px;
+    display: inline-block;
+}
+/*
+#libList {
+    position: absolute;
+    padding: 10px 10px 10px 20px;
+    top: 40px;
+    right: 10px;
+    background: white;
+    z-index: 1;
+    white-space: nowrap;
+    color: black;
+    border-radius: 3px;
+    text-align: center;
+}
+#libList ul {
+    padding-left: 0;
+}
+#libList li {
+    margin-left: 10px;
+    list-style-type: disc;
+} */
+.modal {
+    color: black;
+}
+.dropdown {
+    display: inline-block;
+    top: -7px;
+    margin-right: 10px;
+}
+.dropdown .dropdown-menu {
+    padding: 0;
+}
+.dropdown .dropdown-menu label {
+    padding-left: 10px;
+}
